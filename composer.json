@@ -1,0 +1,19 @@
+{
+    "require": {
+        "vendor/react/http": "^0.8.4",
+        "vendor/nikic/fast-route": "^1.3",
+        "vendor/doctrine/migrations": "^2.1",
+        "vendor/react/mysql": "^0.5.4",
+        "vendor/vlucas/phpdotenv": "^3.6",
+        "vendor/respect/validation": "^1.1",
+        "vendor/react/filesystem": "^0.1.2",
+        "vendor/narrowspark/mimetypes": "^1.5",
+        "vendor/firebase/php-jwt": "^5.0",
+        "vendor/christoph-kluge/reactphp-http-cors-middleware": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "src"
+        }
+    }
+}
