@@ -8,6 +8,8 @@ use components\material\GetAllMaterials;
 use components\category\Storage as Category;
 use components\category\GetAllCategories;
 
+use components\product\Storage as Product;
+use components\product\GetAllProducts;
 
 
 use components\login\Authentication;
@@ -47,6 +49,7 @@ $user = new User($connection);
 $brand = new Brand($connection);
 $material = new Material($connection);
 $category = new Category($connection);
+$product = new Product($connection);
 
 $authenticator = new Authentication($user, getenv('JWT_KEY'));
 
@@ -58,6 +61,7 @@ $routes->post('/logout', $guard->protect(new Logout()));
 $routes->get('/brand',new GetAllBrands($brand));
 $routes->get('/material',new GetAllMaterials($material));
 $routes->get('/category',new GetAllCategories($category));
+$routes->get('/product',new GetAllProducts($product));
 
 $settings = [
     'allow_origin'      => ['*'],
