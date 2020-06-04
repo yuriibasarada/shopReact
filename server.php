@@ -1,4 +1,14 @@
 <?php
+use components\brand\Storage as Brand;
+use components\brand\GetAllBrands;
+
+use components\material\Storage as Material;
+use components\material\GetAllMaterials;
+
+use components\category\Storage as Category;
+use components\category\GetAllCategories;
+
+
 
 use components\login\Authentication;
 use components\login\Guard;
@@ -33,11 +43,21 @@ $connection = $mysql->createLazyConnection($uri);
 $guard = new Guard(getenv('JWT_KEY'));
 
 $user = new User($connection);
+
+$brand = new Brand($connection);
+$material = new Material($connection);
+$category = new Category($connection);
+
 $authenticator = new Authentication($user, getenv('JWT_KEY'));
+
 
 $routes = new RouteCollector(new Std(), new GroupCountBased());
 $routes->post('/login', new Login($authenticator));
 $routes->post('/logout', $guard->protect(new Logout()));
+
+$routes->get('/brand',new GetAllBrands($brand));
+$routes->get('/material',new GetAllMaterials($material));
+$routes->get('/category',new GetAllCategories($category));
 
 $settings = [
     'allow_origin'      => ['*'],
