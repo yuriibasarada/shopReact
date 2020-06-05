@@ -61,7 +61,10 @@ $routes->post('/logout', $guard->protect(new Logout()));
 $routes->get('/brand',new GetAllBrands($brand));
 $routes->get('/material',new GetAllMaterials($material));
 $routes->get('/category',new GetAllCategories($category));
+
 $routes->get('/product',new GetAllProducts($product));
+$routes->get('/product/category',new GetAllProducts($product));
+
 
 $settings = [
     'allow_origin'      => ['*'],
