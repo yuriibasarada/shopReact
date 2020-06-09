@@ -19,7 +19,7 @@ class Storage extends AbstractStorage
         if((int)$params['category_id']) {
             $sql .= " WHERE category_id = " . (int)$params['category_id'];
         }
-        if(isset($params['sort_by']) && $params['sort_type']) {
+        if(isset($params['sort'])) {
             $sql .= ' ORDER BY ' . $params['sort_by'] . ' ' . $params['sort_type'];
         }
         $sql .= " LIMIT " . $params['limit'] . ' OFFSET ' . $offset;

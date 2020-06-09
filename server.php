@@ -11,6 +11,9 @@ use components\category\GetAllCategories;
 use components\product\Storage as Product;
 use components\product\GetAllProducts;
 
+use components\sort\Storage as Sort;
+use components\sort\GetAllSort;
+
 
 use components\login\Authentication;
 use components\login\Guard;
@@ -50,6 +53,7 @@ $brand = new Brand($connection);
 $material = new Material($connection);
 $category = new Category($connection);
 $product = new Product($connection);
+$sort = new Sort($connection);
 
 $authenticator = new Authentication($user, getenv('JWT_KEY'));
 
@@ -65,6 +69,7 @@ $routes->get('/category',new GetAllCategories($category));
 $routes->get('/product',new GetAllProducts($product));
 $routes->get('/product/category',new GetAllProducts($product));
 
+$routes->get('/sort', new GetAllSort($sort));
 
 $settings = [
     'allow_origin'      => ['*'],
